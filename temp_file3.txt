@@ -1,0 +1,22 @@
+In order to train our model, we require the entire
+contents of a Github repository and all of the associated
+accepted and rejected pull request diff files.
+We train on both the repository files and a portion of
+the already accepted pull request diff files, as these
+files represent both the coding style of the repo, and
+the coding style of pull requests that are likely to be
+accepted.
+When the algorithm is initialized, it creates a Repo
+object with the given repository name. If the repository
+is not locally downloaded, the Repo object will
+call our scraper that, given a Github repository, will
+use the GitHub API to download the repository and the
+pull request diff files. The diff files are separated
+into “train” and “test” folders.
+In addition, we use the Github API to download
+metadata for each pull request. This includes information
+on the authors, reviewers, comments, files, and
+commit history of the pull request–including whether
+the request was merged or rejected. The ground truth
+used in training and testing comes from this metadata,
+as does the associated commit and diff information.

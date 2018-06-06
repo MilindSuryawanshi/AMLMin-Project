@@ -1,0 +1,19 @@
+In order to create our training and testing data, we
+extracted 3000 pull requests events that were made in the
+window from 04/01/2012 to 04/14/2012. After data
+sanitization and filtering, this resulted in 2734 usable data
+points. For some features such as contrib_prob and
+repo_prob (as reflected in Table 1), we ran queries on
+GitHub Archive using Google BigQuery to get information
+such as the number of successful pull requests and total
+number of pull requests made for each contributor and
+repository.
+In search of predictive features, we realized our data set
+did not have an explicit representation for some of the
+features we were interested in. For example, the number of
+collaborators for a given repository was not directly
+provided, and we had to use the Github API to extract this
+information. Because data fetching via the Github API is
+slow and we are only limited to only 5000 API calls an
+hour, we wrote a web cache to cache all pages that we
+fetched
